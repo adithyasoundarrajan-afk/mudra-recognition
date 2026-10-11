@@ -1,0 +1,26 @@
+Task 1
+
+1. if the dataset is not balanced the model will just become bias and keep guessing the mudra that has most pictures. it will just ignore the rare ones to get high accuracy.
+2. things like bad lightning, messy background and heavy jewelery makes it hard. also the camera angle can confuse the model.
+3. no we dont need 4k images. it will take too much time and ram to train. 128x128 is enough just to see the hand shape without wasting pc power.
+
+Task 2
+
+1. i used horizontal flip, small rotation and zoom. this is good becuase a dancer can use left or right hand (so horizontal flip helps), and they might stand close or far from camera.
+2. i completly avoided vertical flip (upside down). dancers dont do mudras upside down so teaching the ai that will just ruin the accuracy.
+
+Task 3
+
+1. i used learning rate 0.001 with adam optimizer becuase its a good starting point. and dropout 0.5 which turns off half nuerons randomly so the model dosent just memorize the pictures.
+2. my model learned okay. if training loss goes down but val loss goes up it means overfitting. but my dropout layer and augmentation stopped that.
+
+Task 4
+
+1. looking at confusion matrix, it gets confused between mudras that look almost same like pataka and tripataka. there is only one finger difference and if photo is blury the model misses it.
+2. if it gives wrong prediction with low confidence it means photo was too blury. if its high confidence but wrong, it means model learned a bad pattern like assuming all dark photos are one mudra.
+3. we can fix this by getting more clear photos on plain white background. or use something like mediapipe to crop only the hand.
+
+Task 5
+
+1. confidence score helps student practice. if the app guesses right but confidence is only 55 percent, the student knows their hand shape is sloppy and needs to do it better.
+2. a good future feature is adding live webcam so they dont have to take a photo and upload it manualy every time.
